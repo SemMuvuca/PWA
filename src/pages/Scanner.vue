@@ -4,7 +4,9 @@
     <div class="q-pa-md q-gutter-md">
       <h6>Adicione itens ao carrinho</h6>
       <p>Direcione a sua câmera ao código de barra do produto selecionado</p>
+      <q-btn @click="barcodeVai">Vai item</q-btn>
     </div>
+
   </div>
 </template>
 
@@ -13,21 +15,23 @@ import { StreamBarcodeReader } from "vue-barcode-reader"
 import DetalhesItem from '../components/DetalhesItem.vue'
 import { api } from "boot/axios"
 import { useQuasar } from 'quasar'
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 export default {
   components: { StreamBarcodeReader },
   setup() {
+    const store = inject('store')
     const $q = useQuasar()
     const barcode = ref(7896275960513)
     const item = ref(
       {
-        barcode: '7891991000833',
-        category: 'não pereciveis',
-        description: 'Isso é nescau',
-        title: 'Nescau',
-        unit_price: 100,
+        barcode: '1234567890123',
+        category: 'itens de teste',
+        description: 'Vamo testar',
+        title: 'Item teste',
+        unit_price: 69,
         unit_measure: 'unit',
-        weight: 10
+        weight: 10,
+        quantity: 1
       }
     )
 
@@ -72,6 +76,7 @@ export default {
           // ...more..props...
         }
       }).onOk(() => {
+        store.methods.adicionarItem(item.value)
         console.log('OK')
       }).onCancel(() => {
         console.log('Cancel')
@@ -80,8 +85,30 @@ export default {
       })
     }
 
+    const barcodeVai = () => {
+      $q.dialog({
+        component: DetalhesItem,
+
+        // props forwarded to your custom component
+        componentProps: {
+          title: item.value.title,
+          unit_price: item.value.unit_price,
+          weight: item.value.weight,
+          description: item.value.description
+          // ...more..props...
+        }
+      }).onOk(() => {
+        store.methods.adicionarItem(item.value)
+        console.log('OK')
+      }).onCancel(() => {
+        console.log('Cancel')
+      }).onDismiss(() => {
+        console.log('Called on OK or Cancel')
+      })
+    }
     return {
-      onDecode
+      onDecode,
+      barcodeVai
     }
   },
 };
