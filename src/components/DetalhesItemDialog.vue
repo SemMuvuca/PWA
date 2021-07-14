@@ -13,9 +13,6 @@
         <div class="text-subtitle2">
           R$ {{unit_price}}
         </div>
-        <div class="text-subtitle2">
-          {{weight}} Kg
-        </div>
         <div class="text-caption text-grey">
           {{description}}
         </div>
@@ -56,10 +53,6 @@ export default {
       default: ''
     },
     unit_price: {
-      type: Number,
-      required: false
-    },
-    weight: {
       type: Number,
       required: false
     },
