@@ -6405,6 +6405,11 @@ vue-loader@16.2.0:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
+vue-plugin-load-script@>=2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/vue-plugin-load-script/-/vue-plugin-load-script-2.0.1.tgz#8eebf7ad245b47c8edeb7e163ad8d873a1a0fdf6"
+  integrity sha512-d25OEj0aVGJ6/4A8TUBsBPXdHGsbHq6BRsEqjeebN6q3ykBrAUSNY8Lb2DcEKN0EIRsplCAR6HMeSMPvXj7WKA==
+
 vue-router@4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.8.tgz#55d4290a3122444edbc91a3cd2492bb1d0cef494"
