@@ -53,6 +53,20 @@ const methods = {
         }
       }
     }
+  },
+  adicionarItem (item) {
+    let adicionado = false
+    state.items.every(element => {
+      if (element.barcode === item.barcode){
+        element.quantity++
+        adicionado = true
+        return false
+      }
+      return true
+    })
+    if (!adicionado){
+      state.items.push(item)
+    }
   }
 }
 

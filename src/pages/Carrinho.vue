@@ -26,9 +26,6 @@
           label="Gerar QR"
         />
       </div>
-      <div>
-        <QrCodeDialog ref="dialog"></QrCodeDialog>
-      </div>
     </div>
   </div>
 </template>
@@ -39,7 +36,7 @@ import QrCodeDialog from '../components/QrCode.vue'
 import { inject, computed } from 'vue';
 import { useQuasar } from 'quasar'
 export default {
-  components: { ItemCarrinho, QrCodeDialog },
+  components: { ItemCarrinho },
   setup() {
     const store = inject('store')
     const $q = useQuasar()

@@ -4,7 +4,9 @@
     <div class="q-pa-md q-gutter-md">
       <h6>Adicione itens ao carrinho</h6>
       <p>Direcione a sua câmera ao código de barra do produto selecionado</p>
+      <q-btn @click="barcodeVai">Vai item</q-btn>
     </div>
+
   </div>
 </template>
 
@@ -47,9 +49,31 @@ export default {
       }
     };
 
+    const barcodeVai = () => {
+      $q.dialog({
+        component: DetalhesItem,
+
+        // props forwarded to your custom component
+        componentProps: {
+          title: item.value.title,
+          unit_price: item.value.unit_price,
+          weight: item.value.weight,
+          description: item.value.description
+          // ...more..props...
+        }
+      }).onOk(() => {
+        store.methods.adicionarItem(item.value)
+        console.log('OK')
+      }).onCancel(() => {
+        console.log('Cancel')
+      }).onDismiss(() => {
+        console.log('Called on OK or Cancel')
+      })
+    }
     return {
       onDecode,
-    };
+      barcodeVai
+    }
   },
 };
 </script>
