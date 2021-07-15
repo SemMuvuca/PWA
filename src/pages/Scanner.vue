@@ -9,39 +9,47 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
-import { StreamBarcodeReader } from "vue-barcode-reader"
-import { buscarItem } from '../services/services'
+import { useQuasar } from "quasar";
+import { StreamBarcodeReader } from "vue-barcode-reader";
+import { getItem } from "../services/Scanner.service";
+
+import DetalhesItemDialog from '../components/DetalhesItemDialog.vue'
 
 export default {
   components: { StreamBarcodeReader },
   setup() {
-    const $q = useQuasar()
+    const $q = useQuasar();
 
     const onDecode = async (result) => {
-      await buscarItem(result)
-      .catch(er => {
-      if (er.response.status === 404) {
-        $q.notify({
-          color: 'negative',
-          position: 'top',
-          message: 'O item escaneado não está na database',
-          icon: 'report_problem'
+      try {
+        const teste = await getItem(result);
+        $q.dialog({
+          component: DetalhesItemDialog,
+          componentProps: {
+            title: teste.title,
+            unit_price: teste.unit_price,
+            description: teste.description
+          }
+        }).onOk(() => {
+          console.log('OK')
+        }).onCancel(() => {
+          console.log('Cancel')
+        }).onDismiss(() => {
+          console.log('Called on OK or Cancel')
         })
-      } else {
+      } catch (er) {
         $q.notify({
           color: 'negative',
           position: 'top',
-          message: 'Oops, algo deu errado!',
+          message: er.message,
           icon: 'report_problem'
         })
       }
-    })
-    }
+    };
 
     return {
-      onDecode
-    }
+      onDecode,
+    };
   },
 };
 </script>
