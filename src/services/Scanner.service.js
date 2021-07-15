@@ -6,9 +6,9 @@ export default class ScannerService {
     this.http = http
   }
 
-  getItem = async (barcode) => {
+  getItem = async (id) => {
     try {
-      const response = await this.http.get(`${this.path}/${barcode}`)
+      const response = await this.http.get(`${this.path}/${id}`)
       return response.data
 
     } catch (er) {
