@@ -1,32 +1,35 @@
 import { reactive, readonly } from 'vue'
 
 const state = reactive({
-  mp: new window.MercadoPago('APP_USR-a601847b-f9c9-4d61-aed6-4a7e0990d427', {
-      locale: 'pt-BR'
-    }),
+  // mp: new window.MercadoPago('APP_USR-a601847b-f9c9-4d61-aed6-4a7e0990d427', {
+  //     locale: 'pt-BR'
+  //   }),
   counter: 0,
   colorCode: 'blue',
-  items: [{
-    barcode: '7891991000833',
-    category: 'não pereciveis',
-    description: 'Isso é nescau',
-    title: 'Nescau',
-    unit_price: 100,
-    unit_measure: 'unit',
-    weight: 10,
-    quantity: 1
-  },
-  {
-    barcode: '7894900940398',
-    category: 'não pereciveis',
-    description: 'O guaraná divino',
-    title: 'Guaraná Jesus',
-    unit_price: 10,
-    unit_measure: 'unit',
-    weight: 10,
-    quantity: 1
-  }
-]
+  viewer_product_list: [
+    {
+      title: 'Nescau',
+      brand: "Nestle 1nc.",
+      price: 100,
+      quantity: 1
+    },
+    {
+      title: 'Guaraná Jesus',
+      brand: "Planeta 1nc.",
+      price: 10,
+      quantity: 1
+    }
+  ],
+  server_product_list: [
+    {
+      barcode: '7891991000833',
+      quantity: 1
+    },
+    {
+      barcode: '7894900940398',
+      quantity: 1
+    }
+  ]
 })
 
 const methods = {
@@ -40,32 +43,42 @@ const methods = {
     state.colorCode = val
   },
   aumentarQuantidade (index) {
-    state.items[index].quantity++
+    state.viewer_product_list[index].quantity++
+    state.server_product_list[index].quantity++
+    // console.log('quantity de viewer: ', state.viewer_product_list[index].quantity)
+    // console.log('quantity de server: ', state.server_product_list[index].quantity)
+    // console.log("viewer: ", state.viewer_product_list, "server: ", state.server_product_list)
   },
   diminuirQuantidade (index) {
-    if (state.items[index].quantity > 0) {
-      state.items[index].quantity--
+    if (state.viewer_product_list[index].quantity > 0) {
+      state.server_product_list[index].quantity--
+      state.viewer_product_list[index].quantity--
     }
-    if (state.items[index].quantity === 0) {
-      for (let i = 0; i < state.items.length; i++) {
-        if (state.items[i] === state.items[index]) {
-          state.items.splice(i, 1)
+    // console.log('quantity de viewer: ', state.viewer_product_list[index].quantity)
+    // console.log('quantity de server: ', state.server_product_list[index].quantity)
+    if (state.viewer_product_list[index].quantity === 0) {
+      state.viewer_product_list.map((element, i) => {
+        if (element === state.viewer_product_list[index]) {
+          state.viewer_product_list.splice(i, 1)
+          state.server_product_list.splice(i, 1)
         }
-      }
+      })
     }
+    // console.log("viewer: ", state.viewer_product_list, "server: ", state.server_product_list)
   },
-  adicionarItem (item) {
+  adicionarItem (item_viewer, item_server) {
     let adicionado = false
-    state.items.every(element => {
-      if (element.barcode === item.barcode){
+    state.server_product_list.every(element => {
+      if (element.barcode === item_server.barcode) {
         element.quantity++
         adicionado = true
         return false
       }
       return true
     })
-    if (!adicionado){
-      state.items.push(item)
+    if (!adicionado) {
+      state.viewer_product_list.push(item_viewer)
+      state.server_product_list.push(item_server)
     }
   }
 }
@@ -76,13 +89,10 @@ const getters = {
   },
   totalPrice () {
     let sum = 0
-      for (let i = 0; i < state.items.length; i++) {
-        sum += state.items[i].unit_price * state.items[i].quantity
+      for (let i = 0; i < state.viewer_product_list.length; i++) {
+        sum += state.viewer_product_list[i].price * state.viewer_product_list[i].quantity
       }
     return sum
-  },
-  MercadoPago () {
-    return state.mp
   }
 }
 
