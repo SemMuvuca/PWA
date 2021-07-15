@@ -1,43 +1,45 @@
 <template>
-  <q-item>
-    <q-item-section
-      top
-      thumbnail
-      class="q-ml-none"
-    >
-      <!-- <img src="https://cdn.quasar.dev/img/mountains.jpg"> -->
-    </q-item-section>
+  <q-card class="q-pa-sm q-mb-md">
+    <q-item>
+      <q-item-section
+        top
+        thumbnail
+        class="q-ml-none"
+      >
+        <!-- <img src="https://cdn.quasar.dev/img/mountains.jpg"> -->
+      </q-item-section>
 
-    <q-item-section>
-      <q-item-label>{{title}}</q-item-label>
-      <q-item-label caption>R$ {{unit_price}}</q-item-label>
-    </q-item-section>
+      <q-item-section>
+        <q-item-label>{{title}}</q-item-label>
+        <q-item-label caption>R$ {{price}}</q-item-label>
+      </q-item-section>
 
-    <q-item-section
-      bottom
-      side
-    >
-      <div class="text-grey-8 q-gutter-xs row justify-right">
-        <q-btn
-          size="12px"
-          flat
-          dense
-          round
-          icon="remove_circle_outline"
-          @click="store.methods.diminuirQuantidade(index)"
-        />
-        <span>{{quantity}}</span>
-        <q-btn
-          size="12px"
-          flat
-          dense
-          round
-          icon="add_circle_outline"
-          @click="store.methods.aumentarQuantidade(index)"
-        />
-      </div>
-    </q-item-section>
-  </q-item>
+      <q-item-section
+        bottom
+        side
+      >
+        <div class="text-grey-8 q-gutter-xs row justify-right">
+          <q-btn
+            size="12px"
+            flat
+            dense
+            round
+            icon="remove_circle_outline"
+            @click="store.methods.diminuirQuantidade(index)"
+          />
+          <span>{{quantity}}</span>
+          <q-btn
+            size="12px"
+            flat
+            dense
+            round
+            icon="add_circle_outline"
+            @click="store.methods.aumentarQuantidade(index)"
+          />
+        </div>
+      </q-item-section>
+    </q-item>
+  </q-card>
 </template>
 
 <script>
@@ -48,7 +50,7 @@ export default {
       type: String,
       required: true
     },
-    unit_price: {
+    price: {
       type: Number,
       required: true
     },
@@ -65,7 +67,7 @@ export default {
     const store = inject('store')
 
     return {
-      store,
+      store
     }
   },
 }
