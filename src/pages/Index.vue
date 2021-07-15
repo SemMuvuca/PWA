@@ -32,8 +32,6 @@ export default defineComponent({
 
     const store = inject('store')
 
-    // console.log(store.state.mp.cardForm)
-
     const colorCode = computed({
       get () {
         return store.state.colorCode
