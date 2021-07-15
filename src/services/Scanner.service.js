@@ -4,6 +4,7 @@ const getItem = async (barcode) => {
   try {
     const response = await api.get(`/${barcode}`)
     return response.data
+
   } catch (er) {
 
     if (er.response.status === 404) {
