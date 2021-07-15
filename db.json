@@ -1,7 +1,12 @@
 {
   "9788542207514": {
     "title": "Filosofia para corajosos - Luiz Felipe Pondé",
-    "unit_price": 49.99,
-    "description": "Isso é uma breve descrição de um livro foda para pessoas fodas."
+    "brand": "Planeta 1nc.",
+    "price": 49.99
+  },
+  "7897322714462": {
+    "title": "Mioflex",
+    "brand": "Mantecorp Farmasa",
+    "price": 54.99
   }
 }
