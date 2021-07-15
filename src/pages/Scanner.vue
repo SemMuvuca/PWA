@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { inject } from 'vue'
 import { useQuasar } from "quasar";
 import { StreamBarcodeReader } from "vue-barcode-reader";
 import  ScannerService  from "../services/Scanner.service";
@@ -22,22 +23,36 @@ export default {
     const $q = useQuasar();
     const scanService = new ScannerService()
 
+    const store = inject('store')
+
     const onDecode = async (result) => {
       try {
         let payload = await scanService.getItem(result);
         $q.dialog({
           component: DetalhesItemDialog,
           componentProps: {
+            barcode: payload.barcode,
             title: payload.title,
-            unit_price: payload.unit_price,
-            description: payload.description
+            price: payload.price,
+            brand: payload.brand,
+            adicionar: store.methods.adicionarItem
           }
         }).onOk(() => {
-          console.log('OK')
+            $q.notify({
+            color: 'green',
+            position: 'top',
+            message: 'Item adicionado no carrinho',
+            icon: 'add_shopping_cart'
+          })
         }).onCancel(() => {
-          console.log('Cancel')
+          $q.notify({
+            color: 'red',
+            position: 'top',
+            message: 'Item não adicionado no carrinho',
+            icon: 'remove_shopping_cart'
+          })
         }).onDismiss(() => {
-          console.log('Called on OK or Cancel')
+          // console.log('Called on OK or Cancel')
         })
       } catch (er) {
         $q.notify({
