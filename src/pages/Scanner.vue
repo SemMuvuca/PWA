@@ -1,9 +1,9 @@
 <template>
   <div id="q-app" class="full-width row justify-center items-center q-pt-lg">
-    <StreamBarcodeReader @decode="onDecode"></StreamBarcodeReader>
-    <div class="q-pa-md q-gutter-md">
-      <h6>Adicione itens ao carrinho</h6>
-      <p>Direcione a sua câmera ao código de barra do produto selecionado</p>
+    <StreamBarcodeReader class="q-ma-md" @decode="onDecode"/>
+    <div class="q-pa-md q-gutter-md text-center">
+      <div class="text-h5">Adicione itens ao carrinho</div>
+      <div class="text-subtitle1">Direcione a sua câmera ao código de barra do divroduto selecionado</div>
     </div>
 
   </div>
@@ -11,18 +11,19 @@
 
 <script>
 import { inject } from 'vue'
-import { useQuasar } from "quasar";
-import { StreamBarcodeReader } from "vue-barcode-reader";
-import  ScannerService  from "../services/Scanner.service";
+import { useQuasar } from "quasar"
+import { StreamBarcodeReader } from "vue-barcode-reader"
 
-import DetalhesItemDialog from '../components/DetalhesItemDialog.vue'
+import  ScannerService  from "../services/Scanner.service"
+
+import DetalhesItemDialog from 'components/DetalhesItemDialog'
 
 export default {
   components: { StreamBarcodeReader },
   setup() {
-    const $q = useQuasar();
-    const scanService = new ScannerService()
 
+    const $q = useQuasar()
+    const scanService = new ScannerService()
     const store = inject('store')
 
     const onDecode = async (result) => {
