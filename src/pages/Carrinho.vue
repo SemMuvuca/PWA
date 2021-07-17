@@ -1,10 +1,9 @@
 <template>
-  <div class="q-pa-md q-gutter-md">
+  <div class="q-pa-md fit row juntify-center items-center content-center">
     <q-list
-      class="rounded-borders"
-      style="max-width: 600px"
+      class="col-12 rounded-borders"
     >
-      <q-item-label header>Carrinho</q-item-label>
+      <q-item-label header class="text-subtitle1 text-center text-weight-bold" >Carrinho</q-item-label>
       <ItemCarrinho
         v-for="(item, index) in store.state.viewer_product_list"
         :key="index"
@@ -12,16 +11,17 @@
         :index="index"
       />
     </q-list>
-    <div class="fit row wrap justify-around items-center content-center">
+    <div class="text-center col-12 row fit wrap justify-evenly items-center content-center">
       <div class="col-6">
-        <p>Total a pagar:</p>
-        <p>R$ {{price}}</p>
+        <div class="text-subtitle1 text-weight-bold">Total a pagar:</div>
+        <div class="text-body text-weight-bold">R$ {{price}}</div>
       </div>
-      <div class="col-5">
+      <div class="col-6">
         <q-btn
-          @click="console.log('tá pago seu')"
+          @click="metodosDePagamentoDialog"
           color="green"
-          icon="qr_code_2"
+          size="lg"
+          icon="credit_card"
           label="pagar"
         />
       </div>
@@ -30,12 +30,17 @@
 </template>
 
 <script>
-import ItemCarrinho from '../components/ItemCarrinho.vue'
 import { inject, computed } from 'vue'
+import { useQuasar } from "quasar"
+
+import ItemCarrinho from 'components/ItemCarrinho'
+import pagamentoDialog from 'components/PagamentoDialog'
 
 export default {
   components: { ItemCarrinho },
   setup() {
+
+    const $q = useQuasar()
     const store = inject('store')
 
     const price = computed({
@@ -44,7 +49,23 @@ export default {
       }
     })
 
+    const metodosDePagamentoDialog = () => {
+      $q.dialog({
+          component: pagamentoDialog,
+          componentProps: {
+
+          }
+        }).onOk(() => {
+
+        }).onCancel(() => {
+
+        }).onDismiss(() => {
+          // console.log('Called on OK or Cancel')
+        })
+    }
+
     return {
+      metodosDePagamentoDialog,
       store,
       price
     }
