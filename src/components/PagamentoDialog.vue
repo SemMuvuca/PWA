@@ -1,0 +1,53 @@
+<template>
+  <!-- notice dialogRef here -->
+  <q-dialog ref="dialogRef" @hide="onDialogHide">
+    <q-card class="q-dialog-plugin q-pa-md">
+      <q-card-section class="">
+        <div class="text-h6 text-center">Por favor, selecione uma forma de pagamento</div>
+      </q-card-section>
+      <q-card-actions vertical>
+        <q-btn
+          v-close-popup
+          color="green"
+          label="Cancelar"
+          class="q-my-sm"
+        />
+        <q-btn
+          v-close-popup
+          color="light-blue-6"
+          label="Adicionar"
+          class="q-my-sm"
+        />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+</template>
+
+<script>
+import { useDialogPluginComponent } from 'quasar'
+
+export default {
+  props: {
+  },
+
+  emits: [
+    ...useDialogPluginComponent.emits
+  ],
+
+  setup (props) {
+    const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent()
+
+    const onOKClick = () => {
+      console.log('oi')
+      onDialogOK ()
+    }
+
+    return {
+      dialogRef,
+      onDialogHide,
+      onOKClick,
+      onCancelClick: onDialogCancel
+    }
+  }
+}
+</script>
