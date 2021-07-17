@@ -18,22 +18,24 @@
         bottom
         side
       >
-        <div class="text-grey-8 q-gutter-xs row justify-right">
+        <div class="row q-gutter-sm justify-around text-grey-8">
           <q-btn
-            size="12px"
             flat
             dense
             round
+            size="12px"
             icon="remove_circle_outline"
+            class="col"
             @click="store.methods.diminuirQuantidade(index)"
           />
-          <span>{{quantity}}</span>
+          <div class="col text-body1 text-center">{{quantity}}</div>
           <q-btn
-            size="12px"
             flat
             dense
             round
+            size="12px"
             icon="add_circle_outline"
+            class="col"
             @click="store.methods.aumentarQuantidade(index)"
           />
         </div>
