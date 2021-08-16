@@ -24,12 +24,10 @@
 
 <script>
 import { defineComponent, inject, computed } from 'vue';
-// import externalScript from 'src/boot/mercadopago'
 
 export default defineComponent({
   name: 'PageIndex',
   setup () {
-
     const store = inject('store')
 
     const colorCode = computed({

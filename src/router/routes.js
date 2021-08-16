@@ -7,7 +7,14 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'scanner', component: () => import('pages/Scanner.vue') },
       { path: 'carrinho', component: () => import('pages/Carrinho.vue') },
-      { path: 'sobreNos', component: () => import('pages/SobreNos.vue') }
+      { path: 'sobreNos', component: () => import('pages/SobreNos.vue') },
+    ]
+  },
+  {
+    path: '/pagamento',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: 'form', component: () => import('pages/PagamentoForm.vue') }
     ]
   },
 

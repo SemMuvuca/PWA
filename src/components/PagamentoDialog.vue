@@ -9,13 +9,14 @@
         <q-btn
           v-close-popup
           color="green"
-          label="Cancelar"
+          label="Cartão de crédito"
           class="q-my-sm"
+          to="/pagamento/form"
         />
         <q-btn
           v-close-popup
           color="light-blue-6"
-          label="Adicionar"
+          label="Mercado Pago"
           class="q-my-sm"
         />
       </q-card-actions>
