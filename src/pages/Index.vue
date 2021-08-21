@@ -1,46 +1,27 @@
 <template>
-  <q-page class="flex flex-center">
-    <div
-      :style="{ color: store.state.colorCode }"
-      class="counter-square"
-    >
-      {{ store.state.counter }}
-      <sup>2</sup> =
-      {{store.getters.counterSquared()}}
-    </div>
-    <div class="buttons">
-      <button @click="store.methods.decreaseCounter">-</button>
-      <button @click="store.methods.increaseCounter">+</button>
-    </div>
-    <div>
-      <input
-        type="text"
-        placeholder="Enter color code"
-        v-model="colorCode"
-      >
-    </div>
+  <q-page class="flex">
+    <iframe width="100%" height="545vh" style="border: none;" :src='`static_site/index.html?obj=${JSON.stringify(getQueryParameters())}`'/>
   </q-page>
 </template>
 
 <script>
-import { defineComponent, inject, computed } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'PageIndex',
-  setup () {
-    const store = inject('store')
 
-    const colorCode = computed({
-      get () {
-        return store.state.colorCode
-      },
-      set (val) {
-        store.methods.setColorCode(val)
+  setup () {
+
+    function getQueryParameters () {
+      return {
+        name: "borg",
+        email: "borg@gmail.com",
+        valor: "25"
       }
-    })
+    }
+
     return {
-      store,
-      colorCode
+      getQueryParameters,
     }
   }
 })
