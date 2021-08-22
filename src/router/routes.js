@@ -10,13 +10,6 @@ const routes = [
       { path: 'sobreNos', name: 'sobrenos', component: () => import('pages/SobreNos.vue') },
     ]
   },
-  {
-    path: '/pagamento',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: 'form', component: () => import('pages/PagamentoForm.vue') }
-    ]
-  },
 
   // Always leave this as last one,
   // but you can also remove it
