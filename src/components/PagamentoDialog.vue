@@ -11,13 +11,7 @@
           color="green"
           label="Cartão de crédito"
           class="q-my-sm"
-          to="/pagamento/form"
-        />
-        <q-btn
-          v-close-popup
-          color="light-blue-6"
-          label="Mercado Pago"
-          class="q-my-sm"
+          :to="{name: 'checkout'}"
         />
       </q-card-actions>
     </q-card>
@@ -26,6 +20,7 @@
 
 <script>
 import { useDialogPluginComponent } from 'quasar'
+import route from '../router'
 
 export default {
   props: {
@@ -39,7 +34,11 @@ export default {
     const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent()
 
     const onOKClick = () => {
-      console.log('oi')
+
+      console.log('entrou')
+
+      // route().push('checkout')
+
       onDialogOK ()
     }
 

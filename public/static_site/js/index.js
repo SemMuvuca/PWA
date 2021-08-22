@@ -1,12 +1,16 @@
 //REPLACE WITH YOUR PUBLIC KEY AVAILABLE IN: https://www.mercadopago.com/developers/panel
 const mp = new MercadoPago('TEST-e5cf1519-a8c0-44d6-ba2d-8e05cdbe44c6');
 
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('obj');
+const obj = JSON.parse(myParam);
+
 function updatePrice(total){
   document.getElementById('summary-total').innerText = '$ ' + total;
 };
 
 function loadCardForm() {
-    const productCost = "20" // total a pagar
+    const productCost = String(obj.totalprice)  // total a pagar
     const productDescription = "Teste de Transação"
 
     const cardForm = mp.cardForm({
@@ -60,11 +64,7 @@ function loadCardForm() {
                     return console.warn("Form Mounted handling error: ", error);
                 console.log("Form mounted");
 
-                const urlParams = new URLSearchParams(window.location.search);
-                const myParam = urlParams.get('obj');
-                const obj = JSON.parse(myParam);
-
-                updatePrice(obj.valor);
+                updatePrice(obj.totalprice);
 
             },
             onSubmit: event => {

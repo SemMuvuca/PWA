@@ -1,22 +1,22 @@
 <template>
-  <q-page class="flex">
+  <q-page class="flex flex-center">
     <iframe width="100%" height="545vh" style="border: none;" :src='`static_site/index.html?obj=${JSON.stringify(getQueryParameters())}`'/>
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 
 export default defineComponent({
   name: 'PageIndex',
 
   setup () {
 
+    const store = inject('store')
+
     function getQueryParameters () {
       return {
-        name: "borg",
-        email: "borg@gmail.com",
-        valor: "25"
+        totalprice: store.getters.totalPrice()
       }
     }
 

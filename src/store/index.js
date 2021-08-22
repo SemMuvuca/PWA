@@ -1,9 +1,6 @@
 import { reactive, readonly } from 'vue'
 
 const state = reactive({
-  // mp: new window.MercadoPago('TEST-e5cf1519-a8c0-44d6-ba2d-8e05cdbe44c6', {
-  //     locale: 'pt-BR'
-  //   }),
   counter: 0,
   colorCode: 'blue',
   viewer_product_list: [
