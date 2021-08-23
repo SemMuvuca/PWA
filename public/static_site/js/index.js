@@ -81,10 +81,10 @@ function loadCardForm() {
                     identificationType,
                 } = cardForm.getCardFormData();
 
-                fetch("http://localhost:3000/process_payment", {
+                fetch("http://localhost:8080/process_payment", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
                         token,
@@ -107,7 +107,7 @@ function loadCardForm() {
                 })
                 .then(result => {
                     document.getElementById("payment-status").innerText = result.status;
-                    document.getElementById("payment-detail").innerText = result.message;
+                    document.getElementById("payment-detail").innerText = result.status_detail;
                     $('.container__payment').fadeOut(500);
                     setTimeout(() => { $('.container__result').show(500).fadeIn(); }, 500);
                 })
