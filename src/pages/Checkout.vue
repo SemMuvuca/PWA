@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center">
-    <iframe width="100%" height="545vh" style="border: none;" :src='`static_site/index.html?obj=${JSON.stringify(getQueryParameters())}`'/>
+  <q-page class="flex">
+    <iframe width="100%" height="900vh" style="border: none;" :src='`static_site/index.html?obj=${JSON.stringify(getQueryParameters())}`'/>
   </q-page>
 </template>
 
