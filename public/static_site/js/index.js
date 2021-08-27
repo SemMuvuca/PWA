@@ -20,7 +20,7 @@ function loadCardForm() {
             id: "form-checkout",
             cardholderName: {
                 id: "form-checkout__cardholderName",
-                placeholder: "Holder name",
+                placeholder: "Nome no cartão",
             },
             cardholderEmail: {
                 id: "form-checkout__cardholderEmail",
@@ -28,7 +28,7 @@ function loadCardForm() {
             },
             cardNumber: {
                 id: "form-checkout__cardNumber",
-                placeholder: "Card number",
+                placeholder: "Número do cartão",
             },
             cardExpirationMonth: {
                 id: "form-checkout__cardExpirationMonth",
@@ -36,26 +36,26 @@ function loadCardForm() {
             },
             cardExpirationYear: {
                 id: "form-checkout__cardExpirationYear",
-                placeholder: "YY",
+                placeholder: "AA",
             },
             securityCode: {
                 id: "form-checkout__securityCode",
-                placeholder: "Security code",
+                placeholder: "Código CVV",
             },
             installments: {
                 id: "form-checkout__installments",
-                placeholder: "Installments",
+                placeholder: "Parcelas",
             },
             identificationType: {
                 id: "form-checkout__identificationType",
             },
             identificationNumber: {
                 id: "form-checkout__identificationNumber",
-                placeholder: "Identification number",
+                placeholder: "Núm. de identificação",
             },
             issuer: {
                 id: "form-checkout__issuer",
-                placeholder: "Issuer",
+                placeholder: "Banco",
             },
         },
         callbacks: {
@@ -81,7 +81,7 @@ function loadCardForm() {
                     identificationType,
                 } = cardForm.getCardFormData();
 
-                fetch("http://localhost:3000/process_payment", {
+                fetch("http://localhost:8080/process_payment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -107,7 +107,7 @@ function loadCardForm() {
                 })
                 .then(result => {
                     document.getElementById("payment-status").innerText = result.status;
-                    document.getElementById("payment-detail").innerText = result.message;
+                    document.getElementById("payment-detail").innerText = result.status_detail;
                     $('.container__payment').fadeOut(500);
                     setTimeout(() => { $('.container__result').show(500).fadeIn(); }, 500);
                 })

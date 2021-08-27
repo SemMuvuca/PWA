@@ -29,7 +29,12 @@
             to="/carrinho"
             label="Carrinho"
           />
-          <q-route-tab icon="photo_camera" to="/scanner" label="Scanner" />          <q-route-tab
+          <q-route-tab
+            icon="photo_camera"
+            to="/scanner"
+            label="Scanner"
+          />
+          <q-route-tab
             icon="help"
             to="/tutorial"
             label="Como Usar"
