@@ -4,9 +4,10 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: 'scanner', component: () => import('pages/Scanner.vue') },
-      { path: 'carrinho', component: () => import('pages/Carrinho.vue') }
+      { path: '', component: () => import('pages/Scanner.vue') },
+      { path: 'checkout', name: 'checkout', component: () => import('src/pages/Checkout.vue') },
+      { path: 'carrinho', name: 'carrinho', component: () => import('pages/Carrinho.vue') },
+      { path: 'sobreNos', name: 'sobrenos', component: () => import('pages/SobreNos.vue') },
     ]
   },
 
