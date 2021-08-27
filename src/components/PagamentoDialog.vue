@@ -11,7 +11,7 @@
           color="green"
           label="Cartão de crédito"
           class="q-my-sm"
-          :to="{name: 'checkout'}"
+          to="/pagamento/checkout"
         />
       </q-card-actions>
     </q-card>
@@ -37,7 +37,7 @@ export default {
 
       console.log('entrou')
 
-      // route().push('checkout')
+      // route().push('pagamento/checkout')
 
       onDialogOK ()
     }
