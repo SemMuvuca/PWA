@@ -5,6 +5,7 @@
       reveal
       class="bg-white text-white"
     >
+
     <q-toolbar>
       <q-btn
         flat
@@ -12,27 +13,9 @@
         icon="arrow_back"
         text-color="blue"
         class="q-mr-sm"
-        to="/carrinho"
+        to="/main/carrinho"
       />
     </q-toolbar>
-
-      <!-- <q-avatar>
-        <q-footer
-          bordered
-          class="bg-white text-primary"
-        >
-          <q-tabs
-            keep-alive
-            align="center"
-          >
-            <q-route-tab
-              icon="arrow_back"
-              to="/"
-              label="voltar"
-            />
-          </q-tabs>
-        </q-footer>
-      </q-avatar> -->
 
     </q-header>
 
