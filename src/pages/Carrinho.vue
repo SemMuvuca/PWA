@@ -32,6 +32,7 @@
 <script>
 import { inject, computed } from 'vue'
 import { useQuasar } from "quasar"
+import { useRoute } from 'vue-router'
 
 import ItemCarrinho from 'components/ItemCarrinho'
 import pagamentoDialog from 'components/PagamentoDialog'
@@ -39,6 +40,8 @@ import pagamentoDialog from 'components/PagamentoDialog'
 export default {
   components: { ItemCarrinho },
   setup() {
+
+    console.log(useRoute().params.userId)
 
     const $q = useQuasar()
     const store = inject('store')

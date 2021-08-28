@@ -20,7 +20,6 @@
 
 <script>
 import { useDialogPluginComponent } from 'quasar'
-import route from '../router'
 
 export default {
   props: {
