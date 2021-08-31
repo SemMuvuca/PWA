@@ -21,7 +21,7 @@ const routes = [
     path: '/pagamento',
     component: () => import('layouts/PagamentoLayout.vue'),
     children: [
-      { path: 'checkout', name: 'Checkout', component: () => import('pages/pagamento/Checkout.vue') }
+      { path: ':userId/checkout', name: 'Checkout', component: () => import('pages/pagamento/Checkout.vue') }
     ]
   },
 
