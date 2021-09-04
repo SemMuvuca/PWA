@@ -4,36 +4,45 @@
   <head>
     <meta charset="utf-8">
     <title>Pagamento transparente</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     <script src="https://cdn.muicss.com/mui-0.10.3/extra/mui-combined.min.js" integrity="sha512-HOof0iaD9aueRuqzKdMwEtUCuzmTxvjVnXvqcuTprwjY75rWAvYw2xRW5i+mkX+9Sn6+Wm5Bh6MbSnX0vpjEsw==" crossorigin="anonymous"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script type="text/javascript" src="js/index.js" defer></script>
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
   </head>
 
   <body>
     <div class="mui-container-fluid">
-      <!-- Payment -->
-      <!-- <section class="payment-form"> -->
       <div class="form-payment">
         <div class="products">
-          <h2 class="title">Resumo</h2>
-          <div>Total<span id="summary-total">R$</span></div>
+          <h2 class="title mui--text-display1">Resumo</h2>
+          <div class="mui-row mui--divider-top">
+            <p class="mui-col-md-4 mui--text-headline">
+              Total:
+            </p>
+            <span class="mui-col-md-4 mui-col-md-offset-4 mui--text-title" id="summary-total">
+              R$
+            </span>
+          </div>
         </div>
         <div class="payment-details">
           <form id="form-checkout">
             <h3 class="title">Detalhes do comprador</h3>
             <div class="mui-row">
-              <div class=" mui-col">
+              <div class=" mui-col-sm-5">
                 <input id="form-checkout__cardholderEmail" name="cardholderEmail" type="email" class="form-control" />
               </div>
             </div>
+            <br>
             <div class="mui-row">
               <div class=" mui-col-sm-5">
                 <select id="form-checkout__identificationType" name="identificationType" class="form-control"></select>
               </div>
+              <br>
               <div class=" mui-col-sm-7">
                 <input id="form-checkout__identificationNumber" name="docNumber" type="text" class="form-control" />
               </div>
@@ -44,30 +53,40 @@
               <div class=" mui-col-sm-8">
                 <input id="form-checkout__cardholderName" name="cardholderName" type="text" class="form-control" />
               </div>
+              <br>
               <div class=" mui-col-sm-4">
-                <div class="expiration-date">
-                  <input id="form-checkout__cardExpirationMonth" name="cardExpirationMonth" type="text" class="form-control" />
-                  <span class="date-separator"></span>
-                  <input id="form-checkout__cardExpirationYear" name="cardExpirationYear" type="text" class="form-control" />
+                <div class="expiration-date mui-row">
+                  <input id="form-checkout__cardExpirationMonth" name="cardExpirationMonth" type="text" class="form-control mui-col-xs-4 mui-col-xs-offset-1" />
+                  <input id="form-checkout__cardExpirationYear" name="cardExpirationYear" type="text" class="form-control mui-col-xs-4 mui-col-xs-offset-2" />
                 </div>
               </div>
+              <br>
               <div class=" mui-col-sm-8">
                 <input id="form-checkout__cardNumber" name="cardNumber" type="text" class="form-control" />
               </div>
+              <br>
               <div class=" mui-col-sm-4">
                 <input id="form-checkout__securityCode" name="securityCode" type="text" class="form-control" />
               </div>
+              <br>
               <div id="issuerInput" class=" mui-col-sm-12 hidden">
                 <select id="form-checkout__issuer" name="issuer" class="form-control"></select>
               </div>
+              <br>
               <div class=" mui-col-sm-12">
                 <select id="form-checkout__installments" name="installments" type="text" class="form-control"></select>
               </div>
-              <div class=" mui-col-sm-12">
+              <br>
+              <div class=" mui-col-sm-12 mui-row">
                 <input type="hidden" id="amount" />
                 <input type="hidden" id="description" />
-                <br>
-                <button id="form-checkout__submit" type="submit" class="mui-btn mui-btn--large mui-btn--primary mui-btn--raised">Pagar</button>
+                <button
+                  id="form-checkout__submit"
+                  type="submit"
+                  class="mui-btn mui-btn--large mui-btn--primary mui-btn--raised mui-col-xs-6 mui-col-xs-offset-3"
+                >
+                  Pagar
+                </button>
                 <br>
               </div>
             </div>
