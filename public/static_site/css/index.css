@@ -3,7 +3,8 @@ body {
   size: 100%;
   width: auto;
   height: auto;
-  color: white;}
+  color: white;
+}
 
 .hidden {
   display: none;
