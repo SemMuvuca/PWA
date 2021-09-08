@@ -15,6 +15,7 @@ const routes = [
     children: [
       { path: ':userId', name: 'Main', component: () => import('pages/Scanner.vue') },
       { path: ':userId/carrinho', name: 'Carrinho', component: () => import('pages/Carrinho.vue') },
+      { path: ':userId/sobrenos', name: 'Sobrenos', component: () => import('pages/SobreNos.vue') }
     ]
   },
   {

@@ -1,9 +1,12 @@
 <template>
   <div id="q-app" class="full-width row justify-center items-center q-pt-lg">
-    <StreamBarcodeReader class="q-ma-md" @decode="onDecode"/>
+    <StreamBarcodeReader
+      class="q-ma-md"
+      @decode="onDecode"
+    />
     <div class="q-pa-md q-gutter-md text-center">
       <div class="text-h5">Adicione itens ao carrinho</div>
-      <div class="text-subtitle1">Direcione a sua câmera ao código de barra do divroduto selecionado</div>
+      <div class="text-subtitle1">Direcione a sua câmera ao código de barra do produto selecionado.</div>
     </div>
 
   </div>

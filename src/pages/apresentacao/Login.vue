@@ -4,12 +4,16 @@
       <q-input
         filled
         v-model="email"
+        type="email"
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="E-mail"
+        :rules="[
+          val => isValidEmail(val)
+        ]"
       />
     </div>
-    <div class="col-10 q-pb-xs">
+    <div class="col-10 q-pb-sm">
       <q-input
         filled
         v-model="password"
@@ -17,6 +21,9 @@
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="Senha"
+        :rules="[
+          val => isPasswordValid(val)
+        ]"
       >
         <template v-slot:append>
           <q-icon
@@ -48,15 +55,16 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router'
+import { defineComponent, ref } from 'vue'
+import { useRouter, /* useRoute */ } from 'vue-router'
+import { isValidEmail, isPasswordValid } from '../../helpers/ValidationHelper'
 
 export default defineComponent({
   name: 'Login',
 
   setup () {
     const router = useRouter() // Compôe a instância do router
-    const route = useRoute() // Acessa as propriedades da URL atual
+    // const route = useRoute() // Acessa as propriedades da URL atual
 
     const check = ref(false)
     const isPwd = ref(true)
@@ -79,7 +87,8 @@ export default defineComponent({
       isPwd,
       password,
       email,
-      pushToMain
+      pushToMain,
+      isValidEmail
     }
   }
 })
