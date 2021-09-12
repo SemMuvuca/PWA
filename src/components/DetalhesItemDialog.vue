@@ -80,8 +80,13 @@ export default {
 
     const onOKClick = () => {
       props.adicionar(
-        {title: props.title, brand: props.brand, price: props.price, quantity: 1}, // item_viewer
-        {barcode: props.barcode, quantity: 1} // item_server
+        {
+          barcode: props.barcode,
+          title: props.title,
+          brand: props.brand,
+          price: props.price,
+          quantity: 1
+        }, // item_viewer
       )
       onDialogOK ()
     }
