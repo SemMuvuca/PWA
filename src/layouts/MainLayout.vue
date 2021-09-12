@@ -11,7 +11,7 @@
         <q-btn
           flat
           color="white"
-          to="/sobreNos"
+          :to="{name: 'Sobrenos'}"
           icon="info"
           label="Sobre nós"
         />
@@ -26,19 +26,19 @@
         >
           <q-route-tab
             icon="shopping_cart"
-            to="/carrinho"
+            :to="{name: 'Carrinho'}"
             label="Carrinho"
           />
           <q-route-tab
             icon="photo_camera"
-            to="/scanner"
+            :to="{name: 'Main'}"
             label="Scanner"
           />
-          <q-route-tab
+          <!-- <q-route-tab
             icon="help"
-            to="/tutorial"
+            :to="{name: 'Tutorial', params: {userId: 'a'}}"
             label="Como Usar"
-          />
+          /> -->
         </q-tabs>
       </q-footer>
     </q-header>

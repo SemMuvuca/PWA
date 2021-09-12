@@ -11,7 +11,7 @@
           color="green"
           label="Cartão de crédito"
           class="q-my-sm"
-          to="/pagamento/checkout"
+          :to="{name: 'Checkout'}"
         />
       </q-card-actions>
     </q-card>
@@ -20,7 +20,6 @@
 
 <script>
 import { useDialogPluginComponent } from 'quasar'
-import route from '../router'
 
 export default {
   props: {
