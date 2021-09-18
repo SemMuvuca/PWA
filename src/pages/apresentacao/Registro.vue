@@ -118,14 +118,18 @@ export default defineComponent({
       birthday: date.formatDate(Date.now(), 'DD/MM/YYYY'),
     })
 
+    const genderOptions = ref(['Masculino', 'Feminino', 'Não-binário'])
     const check = ref(false)
     const isPwd = ref(true)
-    const genderOptions = ref(['Masculino', 'Feminino', 'Não-binário'])
 
     function tratamentos () {
-      // console.log(typeof(date.extractDate(birthday, 'DD/MM/YYYY'))) -- transformação em Date type
-      // telephoneNumber.value = telephoneNumber.value.replace(/[^\w\\s]/gi, '') -- tratamento do numero
-      console.log(user.email)
+      console.log(
+        {
+          ...user,
+          birthday: date.extractDate(user.birthday, 'DD/MM/YYYY'), // transformação em Date type
+          telephoneNumber: user.telephoneNumber.replace(/[^\w\\s]/gi, '') // tratamento do numero
+        }
+      )
     }
 
     return {
