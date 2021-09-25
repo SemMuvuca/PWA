@@ -11,7 +11,7 @@
         <q-btn
           flat
           color="white"
-          to="/sobreNos"
+          :to="{name: 'Sobrenos'}"
           icon="info"
           label="Sobre nós"
         />

@@ -13,7 +13,7 @@
         icon="arrow_back"
         text-color="blue"
         class="q-mr-sm"
-        to="/main/carrinho"
+        :to="{name: 'Carrinho'}"
       />
     </q-toolbar>
 

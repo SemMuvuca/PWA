@@ -2,21 +2,28 @@
   <q-page class="row wrap justify-center items-center content-center q-gutter-y-md bg-blue-7">
     <div class="col-11">
       <q-input
-        v-model="email"
+        v-model="user.email"
+        type="email"
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="E-mail"
         filled
+        :rules="[
+          val => isValidEmail(val)
+        ]"
       />
     </div>
     <div class="col-11">
       <q-input
-        v-model="password"
+        v-model="user.password"
         :type="isPwd ? 'password' : 'text'"
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="Senha"
         filled
+        :rules="[
+          val => isPasswordValid(val)
+        ]"
       >
         <template v-slot:append>
           <q-icon
@@ -30,16 +37,21 @@
     <div class="col-11 row justify-between">
       <div class="col-6">
         <q-input
-        v-model="telephoneNumber"
+          v-model="user.telephoneNumber"
           standout="bg-yellow-8 text-black"
           bg-color="white"
           hint="num. de telefone"
+          mask="(##) #####-####"
           filled
+          :rules="[
+          val => isTelephoneValid(val)
+        ]"
         />
       </div>
       <div class="col-5">
         <q-input
-          v-model="birthday"
+          v-model="user.birthday"
+          type="text"
           standout="bg-yellow-8 text-black"
           bg-color="white"
           hint="nascimento"
@@ -56,7 +68,7 @@
                 transition-hide="scale"
               >
                 <q-date
-                  v-model="birthday"
+                v-model="user.birthday"
                   mask="DD/MM/YYYY"
                 >
                   <div class="row items-center justify-end">
@@ -76,7 +88,7 @@
     </div>
     <div class="col-11">
       <q-select
-        v-model="genre"
+        v-model="user.genre"
         :options=genderOptions
         standout="bg-yellow-8 text-black"
         bg-color="white"
@@ -84,38 +96,47 @@
         filled
       />
     </div>
-    <q-btn flat class="col-9 bg-yellow-8" label="Cadastrar" />
+    <q-btn flat class="col-9 bg-yellow-8" label="Cadastrar" @click="tratamentos" />
   </q-page>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, reactive } from 'vue';
 import { date } from 'quasar'
+import { isValidEmail, isPasswordValid, isTelephoneValid } from '../../helpers/ValidationHelper'
 
 export default defineComponent({
   name: 'Login',
 
   setup () {
 
-    const email = ref('')
-    const password = ref('')
-    const genre = ref('')
-    const telephoneNumber = ref('')
+    const user = reactive({
+      email: '',
+      password: '',
+      genre: '',
+      telephoneNumber: '',
+      birthday: date.formatDate(Date.now(), 'DD/MM/YYYY'),
+    })
 
     const check = ref(false)
     const isPwd = ref(true)
-    const birthday = ref(date.formatDate(Date.now(), 'DD/MM/YYYY'))
     const genderOptions = ref(['Masculino', 'Feminino', 'Não-binário'])
 
+    function tratamentos () {
+      // console.log(typeof(date.extractDate(birthday, 'DD/MM/YYYY'))) -- transformação em Date type
+      // telephoneNumber.value = telephoneNumber.value.replace(/[^\w\\s]/gi, '') -- tratamento do numero
+      console.log(user.email)
+    }
+
     return {
-      email,
-      password,
-      genre,
-      telephoneNumber,
+      user,
       check,
       isPwd,
-      birthday,
       genderOptions,
+      isValidEmail,
+      isPasswordValid,
+      isTelephoneValid,
+      tratamentos
     }
   }
 })

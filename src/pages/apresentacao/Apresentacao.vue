@@ -11,8 +11,20 @@
           Scaneie seus produtos, pague e leve para casa
         </div>
       </div>
-        <q-btn class="col-7 bg-yellow-8 q-mt-xl" to="/registro">crie sua conta</q-btn>
-        <q-btn flat to="/login" text-color="white" class="col-7 bg-blue-9">já tenho uma conta</q-btn>
+        <q-btn
+          class="col-7 bg-yellow-8 q-mt-xl"
+          :to="{name: 'Registro'}"
+        >
+          crie sua conta
+        </q-btn>
+        <q-btn
+          flat
+          text-color="white"
+          class="col-7 bg-blue-9"
+          :to="{name: 'Login'}"
+        >
+          já tenho uma conta
+        </q-btn>
     </div>
   </q-page>
 </template>

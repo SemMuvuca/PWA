@@ -97,13 +97,13 @@ function loadCardForm () {
           .then(result => {
             document.getElementById('payment-status').innerText = result.status
             document.getElementById('payment-detail').innerText = result.status_detail
-            // $('.container__payment').fadeOut(500)
-            document.querySelector('.container__payment').classList.add('hide')
-            document.querySelector('.container__payment').classList.remove('show')
+            $('.container__payment').fadeOut(500)
+            // document.querySelector('.container__payment').classList.add('hide')
+            // document.querySelector('.container__payment').classList.remove('show')
             setTimeout(() => {
-              // $('.container__result').show(500).fadeIn()
-              document.querySelector('.container__result').classList.add('show')
-              document.querySelector('.container__result').classList.remove('hide')
+              $('.container__result').show(500).fadeIn()
+              // document.querySelector('.container__result').classList.add('show')
+              // document.querySelector('.container__result').classList.remove('hide')
             }, 500)
           })
           .catch(error => {
