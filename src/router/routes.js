@@ -13,16 +13,16 @@ const routes = [
     path: '/main',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: ':userId', name: 'Main', props: true, component: () => import('pages/Scanner.vue') },
-      { path: ':userId/carrinho', name: 'Carrinho', props: true, component: () => import('pages/Carrinho.vue') },
-      { path: ':userId/sobrenos', name: 'Sobrenos', props: true, component: () => import('pages/SobreNos.vue') }
+      { path: '', name: 'Main', component: () => import('pages/Scanner.vue') },
+      { path: '/carrinho', name: 'Carrinho', component: () => import('pages/Carrinho.vue') },
+      { path: '/sobrenos', name: 'Sobrenos', component: () => import('pages/SobreNos.vue') }
     ]
   },
   {
     path: '/pagamento',
     component: () => import('layouts/PagamentoLayout.vue'),
     children: [
-      { path: ':userId/checkout', name: 'Checkout', props: true, component: () => import('pages/pagamento/Checkout.vue') }
+      { path: '/checkout', name: 'Checkout', component: () => import('pages/pagamento/Checkout.vue') }
     ]
   },
 

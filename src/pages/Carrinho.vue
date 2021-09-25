@@ -41,8 +41,6 @@ export default {
   components: { ItemCarrinho },
   setup() {
 
-    console.log(useRoute().params.userId)
-
     const $q = useQuasar()
     const store = inject('store')
 
