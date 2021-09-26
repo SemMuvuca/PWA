@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row wrap justify-center items-center content-center bg-blue-7 ">
+  <q-page class="row wrap justify-center items-center content-center bg-blue-7">
     <div class="col-10 q-pb-xl">
       <q-input
         filled
@@ -8,9 +8,6 @@
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="E-mail"
-        :rules="[
-          val => isValidEmail(val)
-        ]"
       />
     </div>
     <div class="col-10 q-pb-sm">
@@ -21,9 +18,6 @@
         standout="bg-yellow-8 text-black"
         bg-color="white"
         hint="Senha"
-        :rules="[
-          val => isPasswordValid(val)
-        ]"
       >
         <template v-slot:append>
           <q-icon
@@ -48,48 +42,43 @@
         <a class="text-body1 text-white" href="about:blank">Esqueci a senha</a>
       </div>
     </div>
-    <q-btn flat class="col-7 bg-yellow-8" @click="pushToMain">
-      Logar
-    </q-btn>
+    <q-btn flat class="col-7 bg-yellow-8" :to="{name: 'Main'}"> Logar </q-btn>
   </q-page>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import { useRouter, /* useRoute */ } from 'vue-router'
-import { isValidEmail, isPasswordValid } from '../../helpers/ValidationHelper'
+import { defineComponent, ref } from "vue"
+import { useRouter /* useRoute */ } from "vue-router"
 
 export default defineComponent({
-  name: 'Login',
+  name: "Login",
 
-  setup () {
-    const router = useRouter() // Compôe a instância do router
+  setup() {
+    const router = useRouter(); // Compôe a instância do router
     // const route = useRoute() // Acessa as propriedades da URL atual
 
-    const check = ref(false)
-    const isPwd = ref(true)
+    const check = ref(false);
+    const isPwd = ref(true);
 
-    const email = ref('')
-    const password = ref('')
+    const email = ref("");
+    const password = ref("");
 
     //Local methods:
-    function pushToMain() {
-      router.push({
-        name: 'Main',
-        params: {
-          userId: 'teste'
-        }
-      })
-    }
+    // function pushToMain() {
+    //   router.push({
+    //     name: "Main",
+    //     params: {
+    //       userId: "teste",
+    //     },
+    //   });
+    // }
 
     return {
       check,
       isPwd,
       password,
-      email,
-      pushToMain,
-      isValidEmail
-    }
-  }
-})
+      email
+    };
+  },
+});
 </script>
