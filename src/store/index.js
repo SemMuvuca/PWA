@@ -6,16 +6,16 @@ const state = reactive({
       barcode: '7891991000833',
       title: 'Nescau',
       brand: "Nestle 1nc.",
-      price: 100,
+      price: 8.15,
       quantity: 1
     },
-    {
-      barcode: '7894900940398',
-      title: 'Guaraná Jesus',
-      brand: "Planeta 1nc.",
-      price: 10,
-      quantity: 1
-    }
+    // {
+    //   barcode: '7894900940398',
+    //   title: 'Guaraná Jesus',
+    //   brand: "Planeta 1nc.",
+    //   price: 10,
+    //   quantity: 1
+    // }
   ]
 })
 

@@ -1,6 +1,16 @@
 const mp = new MercadoPago('TEST-e5cf1519-a8c0-44d6-ba2d-8e05cdbe44c6')
 const urlParams = new URLSearchParams(window.location.search)
 const obj = JSON.parse(urlParams.get('obj'))
+
+// setTimeout(() => {
+//   // $('.container__payment').fadeOut(500)
+//   document.querySelector('.container__payment').classList.toggle('fade')
+// }, 500)
+// setTimeout(() => {
+//   // $('.container__result').show(500).fadeIn()
+//   document.querySelector('.container__result').classList.toggle('fade')
+// }, 1000)
+
 function updatePrice (total) {
   document.getElementById('summary-total').innerText = 'R$ ' + total
 }
@@ -97,13 +107,11 @@ function loadCardForm () {
           .then(result => {
             document.getElementById('payment-status').innerText = result.status
             document.getElementById('payment-detail').innerText = result.status_detail
-            $('.container__payment').fadeOut(500)
-            // document.querySelector('.container__payment').classList.add('hide')
-            // document.querySelector('.container__payment').classList.remove('show')
+            // $('.container__payment').fadeOut(500)
+            document.querySelector('.container__payment').classList.toggle('fadeIn')
             setTimeout(() => {
-              $('.container__result').show(500).fadeIn()
-              // document.querySelector('.container__result').classList.add('show')
-              // document.querySelector('.container__result').classList.remove('hide')
+              // $('.container__result').show(500).fadeIn()
+              document.querySelector('.container__result').classList.toggle('fadeOut')
             }, 500)
           })
           .catch(error => {

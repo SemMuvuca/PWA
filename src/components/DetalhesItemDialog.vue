@@ -46,10 +46,10 @@ import { useDialogPluginComponent } from 'quasar'
 
 export default {
   props: {
-    barcode: {
-      type: String,
-      required: true
-    },
+    // barcode: {
+    //   type: String,
+    //   required: true
+    // },
     title: {
       type: String,
       required: true,
@@ -60,13 +60,13 @@ export default {
       required: false
     },
     price: {
-      type: Number,
+      type: String,
       required: true
     },
-    adicionar: {
-      type: Function,
-      required: true
-    }
+    // adicionar: {
+    //   type: Function,
+    //   required: true
+    // }
   },
 
   emits: [
@@ -79,15 +79,15 @@ export default {
     // console.log('this store: ', props.adicionar )
 
     const onOKClick = () => {
-      props.adicionar(
-        {
-          barcode: props.barcode,
-          title: props.title,
-          brand: props.brand,
-          price: props.price,
-          quantity: 1
-        }, // item_viewer
-      )
+      // props.adicionar(
+      //   {
+      //     barcode: props.barcode,
+      //     title: props.title,
+      //     brand: props.brand,
+      //     price: props.price,
+      //     quantity: 1
+      //   }, // item_viewer
+      // )
       onDialogOK ()
     }
 

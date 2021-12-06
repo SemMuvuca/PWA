@@ -47,12 +47,25 @@ body {
 }
 
 /* Cool effects for replacing JQuery */
-.hide {
-  opacity: 0;
-  transition: opacity 500ms;
-}
 
-.show {
+.container__payment {
   opacity: 1;
   transition: opacity 500ms;
+  display: block;
+}
+
+.container__payment.fade {
+  opacity: 0;
+  display: none;
+}
+
+.container__result {
+  opacity: 0;
+  transition: opacity 500ms;
+  display: none;
+}
+
+.container__result.fade {
+  opacity: 1;
+  display: block;
 }
