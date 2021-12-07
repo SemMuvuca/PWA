@@ -80,7 +80,7 @@ function loadCardForm () {
           identificationNumber,
           identificationType
         } = cardForm.getCardFormData()
-        fetch('http://localhost:8080/process_payment', {
+        fetch('http://localhost:8080/mercadopago/process_payment', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -107,11 +107,13 @@ function loadCardForm () {
           .then(result => {
             document.getElementById('payment-status').innerText = result.status
             document.getElementById('payment-detail').innerText = result.status_detail
+            console.log(result.status)
+            console.log(result.status_details)
             // $('.container__payment').fadeOut(500)
-            document.querySelector('.container__payment').classList.toggle('fadeIn')
+            document.querySelector('.container__payment').classList.toggle('fade')
             setTimeout(() => {
               // $('.container__result').show(500).fadeIn()
-              document.querySelector('.container__result').classList.toggle('fadeOut')
+              document.querySelector('.container__result').classList.toggle('fade')
             }, 500)
           })
           .catch(error => {

@@ -1,14 +1,14 @@
 import { http } from "../boot/axios"
 
 export default class ScannerService {
-  constructor (path = '') {
+  constructor (path = '/produtos') {
     this.path = path,
     this.http = http
   }
 
-  getItem = async (id) => {
+  getItem = async (code) => {
     try {
-      const response = await this.http.get(`${this.path}/${id}`)
+      const response = await this.http.get(`${this.path}`, { params: { Filters: `code==${code}` } })
       return response.data
 
     } catch (er) {

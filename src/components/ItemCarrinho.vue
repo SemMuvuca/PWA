@@ -28,7 +28,7 @@
             class="col"
             @click="store.methods.diminuirQuantidade(index)"
           />
-          <div class="col text-body1 text-center">{{quantity}}</div>
+          <div class="col text-body1 text-center">{{quantidade}}</div>
           <q-btn
             flat
             dense
@@ -56,7 +56,7 @@ export default {
       type: Number,
       required: true
     },
-    quantity: {
+    quantidade: {
       type: Number,
       required: true
     },

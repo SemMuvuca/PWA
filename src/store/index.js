@@ -1,22 +1,7 @@
 import { reactive, readonly } from 'vue'
 
 const state = reactive({
-  viewer_product_list: [
-    {
-      barcode: '7891991000833',
-      title: 'Nescau',
-      brand: "Nestle 1nc.",
-      price: 8.15,
-      quantity: 1
-    },
-    // {
-    //   barcode: '7894900940398',
-    //   title: 'Guaraná Jesus',
-    //   brand: "Planeta 1nc.",
-    //   price: 10,
-    //   quantity: 1
-    // }
-  ]
+  viewer_product_list: []
 })
 
 const methods = {
@@ -30,14 +15,14 @@ const methods = {
     state.colorCode = val
   },
   aumentarQuantidade (index) {
-    state.viewer_product_list[index].quantity++
-    console.log('quantity de viewer: ', state.viewer_product_list)
+    state.viewer_product_list[index].quantidade++
+    console.log('quantidade de viewer: ', state.viewer_product_list)
   },
   diminuirQuantidade (index) {
-    if (state.viewer_product_list[index].quantity > 0) {
-      state.viewer_product_list[index].quantity--
+    if (state.viewer_product_list[index].quantidade > 0) {
+      state.viewer_product_list[index].quantidade--
     }
-    if (state.viewer_product_list[index].quantity === 0) {
+    if (state.viewer_product_list[index].quantidade === 0) {
       state.viewer_product_list.map((element, i) => {
         if (element === state.viewer_product_list[index]) {
           state.viewer_product_list.splice(i, 1)
@@ -49,7 +34,7 @@ const methods = {
     let adicionado = false
     state.viewer_product_list.every(element => {
       if (element.barcode === item_viewer.barcode) {
-        element.quantity++
+        element.quantidade++
         adicionado = true
         return false
       }
@@ -68,7 +53,7 @@ const getters = {
   totalPrice () {
     let sum = 0
       for (let i = 0; i < state.viewer_product_list.length; i++) {
-        sum += state.viewer_product_list[i].price * state.viewer_product_list[i].quantity
+        sum += state.viewer_product_list[i].price * state.viewer_product_list[i].quantidade
       }
     return sum
   }
